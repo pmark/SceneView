@@ -3,13 +3,13 @@ import SceneKit
 
 #if canImport(UIKit)
 
-class SceneViewController: SCNViewController {
+public class SceneViewController: SCNViewController {
     
     private var _scene: SCNScene?
-    override var scene: SCNScene? { _scene }
+    override public var scene: SCNScene? { _scene }
     
     init(scene: SCNScene) {
-        super.init(nibName: nil)
+        super.init(nibName: nil, bundle: nil, viewFrame: nil, viewOptions: nil)
         _scene = scene
     }
     
@@ -21,13 +21,13 @@ class SceneViewController: SCNViewController {
         fatalError("init(nibName:bundle:viewFrame:viewOptions:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         scnView.scene = scene
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
     }
@@ -37,11 +37,11 @@ public struct SceneView: UIViewControllerRepresentable {
     
     let scene: SCNScene
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<SceneViewController>) -> SceneViewController {
-        SceneViewController(scene: scene)
+    public func makeUIViewController(context: UIViewControllerRepresentableContext<SceneView>) -> SceneViewController {
+        return SceneViewController(scene: scene)
     }
     
-    func updateUIViewController(_ uiViewController: SceneViewController, context: UIViewControllerRepresentableContext<SceneViewController>) {
+    public func updateUIViewController(_ uiViewController: SceneViewController, context: UIViewControllerRepresentableContext<SceneView>) {
         
     }
 }
