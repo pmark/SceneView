@@ -9,8 +9,16 @@ class SceneViewController: SCNViewController {
     override var scene: SCNScene? { _scene }
     
     init(scene: SCNScene) {
-        super.init()
+        super.init(nibName: nil)
         _scene = scene
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public required init(nibName: String?, bundle nibBundle: Bundle? = nil, viewFrame: CGRect?, viewOptions: [String : Any]? = [:]) {
+        fatalError("init(nibName:bundle:viewFrame:viewOptions:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -29,11 +37,11 @@ public struct SceneView: UIViewControllerRepresentable {
     
     let scene: SCNScene
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ModelViewController>) -> SceneViewController {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<SceneViewController>) -> SceneViewController {
         SceneViewController(scene: scene)
     }
     
-    func updateUIViewController(_ uiViewController: SceneViewController, context: UIViewControllerRepresentableContext<ModelViewController>) {
+    func updateUIViewController(_ uiViewController: SceneViewController, context: UIViewControllerRepresentableContext<SceneViewController>) {
         
     }
 }
