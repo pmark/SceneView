@@ -37,6 +37,10 @@ public struct SceneView: UIViewControllerRepresentable {
     
     let scene: SCNScene
     
+    public init(scene: SCNScene) {
+        self.scene = scene
+    }
+    
     public func makeUIViewController(context: UIViewControllerRepresentableContext<SceneView>) -> SceneViewController {
         return SceneViewController(scene: scene)
     }
