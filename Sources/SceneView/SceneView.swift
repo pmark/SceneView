@@ -30,7 +30,7 @@ public struct SceneView: UIViewControllerRepresentable {
     let scene: SCNScene
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ModelViewController>) -> SceneViewController {
-        SceneViewController()
+        SceneViewController(scene: scene)
     }
     
     func updateUIViewController(_ uiViewController: SceneViewController, context: UIViewControllerRepresentableContext<ModelViewController>) {
