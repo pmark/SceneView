@@ -1,3 +1,3 @@
 # SceneView
 
-A description of this package.
+A Simple SwiftUI Widget that allows the presentation of a SCNScene.
