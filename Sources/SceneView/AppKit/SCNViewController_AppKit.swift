@@ -22,14 +22,15 @@ open class SCNViewController : NSViewController {
     public required init(nibName:String?, bundle nibBundle:Bundle?=nil, viewFrame:CGRect?, viewOptions:[String:Any]?=[:])
     {
         if nibName == nil {
-            _initViewFrame = viewFrame ?? CGRect.null
+            _initViewFrame = viewFrame ?? CGRect.zero
             _initViewOptions = viewOptions
         } else {
-            _initViewFrame = CGRect.null
+            _initViewFrame = CGRect.zero
             _initViewOptions = nil
         }
         
         super.init(nibName: nibName, bundle: nibBundle)
+        
     }
     
     public required init?(coder aDecoder:NSCoder) {

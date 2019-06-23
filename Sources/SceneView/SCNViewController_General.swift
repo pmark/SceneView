@@ -9,9 +9,6 @@ import Foundation
 import SceneKit
 
 extension SCNViewController {
-    enum Error : Swift.Error {
-        case nibStoryboardViewIsNotAnSCNView
-    }
     
     public convenience init(viewFrame:CGRect?, viewOptions:[String:Any]? = [:]) {
         self.init(nibName: nil, bundle: nil, viewFrame: viewFrame, viewOptions: viewOptions)
@@ -26,12 +23,6 @@ extension SCNViewController {
     
     public override func loadView()
     {
-        guard self.nibName == nil && self.storyboard == nil else {
-            super.loadView()
-            try! { guard self.view is SCNView else { throw Error.nibStoryboardViewIsNotAnSCNView } }()
-            return
-        }
-        
         self.view = {
             let view = SCNView(frame: _initViewFrame, options: _initViewOptions)
             if #available(iOS 9.0, tvOS 9.0, *), NSClassFromString("AVAudioEngine") != nil {
