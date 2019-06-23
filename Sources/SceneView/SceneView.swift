@@ -1,8 +1,6 @@
 import SwiftUI
 import SceneKit
 
-#if canImport(UIKit)
-
 public class SceneViewController: SCNViewController {
     
     private var _scene: SCNScene?
@@ -26,13 +24,9 @@ public class SceneViewController: SCNViewController {
         
         scnView.scene = scene
     }
-    
-    override public func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
 }
 
+#if canImport(UIKit)
 public struct SceneView: UIViewControllerRepresentable {
     
     let scene: SCNScene
@@ -49,5 +43,23 @@ public struct SceneView: UIViewControllerRepresentable {
         
     }
 }
+#endif
 
+#if canImport(AppKit)
+public struct SceneView: NSViewControllerRepresentable {
+    
+    let scene: SCNScene
+    
+    public init(scene: SCNScene) {
+        self.scene = scene
+    }
+    
+    public func makeNSViewController(context: NSViewControllerRepresentableContext<SceneView>) -> SceneViewController {
+        return SceneViewController(scene: scene)
+    }
+    
+    public func updateNSViewController(_ nsViewController: SceneViewController, context: NSViewControllerRepresentableContext<SceneView>) {
+        
+    }
+}
 #endif
