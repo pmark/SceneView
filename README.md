@@ -10,6 +10,7 @@ import SwiftUI
 import SceneKit
 import SceneView
 
+// Simple SCNScene with a procedural sky and rotating metallic cube (not included)
 let scene: SCNScene = { SCNScene(named: "DemoScene.scn")! }()
 
 #if canImport(UIKit)
@@ -22,7 +23,7 @@ struct ContentView : View {
     var body: some View {
         VStack {
             if safeAreaExists {
-                SceneView(scene: scene).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                SceneView(scene: scene).edgesIgnoringSafeArea(.all)
             } else {
                 SceneView(scene: scene)
             }
